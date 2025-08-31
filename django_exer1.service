@@ -1,0 +1,12 @@
+[Unit]
+Description=Gunicorn instance for django_exer1
+After=network.target
+
+[Service]
+User=www-data
+Group=www-data
+WorkingDirectory=/var/www/django_exer1
+ExecStart=/var/www/django_exer1/venv/bin/gunicorn --workers 3 --bind unix:/var/www/django_exer1/django_exer1.sock django_exer1.wsgi:application
+
+[Install]
+WantedBy=multi-user.target
